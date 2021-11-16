@@ -20,8 +20,10 @@ async function run() {
     try {
         await client.connect();
 
-        const database = client.db('cycleShop');
-        const cycleCollection = database.collection('cycle');
+        console.log('connected')
+
+        const database = client.db('shop');
+        const cycleCollection = database.collection('cycles');
         const ordersCollection = database.collection('orders');
         const usersCollection = database.collection('users');
         const reviewsCollection = database.collection('reviews');
@@ -30,7 +32,7 @@ async function run() {
         app.get('/cycles', async (req, res) => {
             const cursor = cycleCollection.find({});
             const result = await cursor.toArray();
-            // console.log(result);
+            console.log(result);
             res.send(result);
         });
 
